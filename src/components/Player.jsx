@@ -1,29 +1,20 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 
 export default function Player() {
+  // Ссылка useRef на <input/> имени игрока.
+  const playerName = useRef();
   // Хук отслеживания состояния имени игрока(String).
-  const [enteredPlayerName, setEnteredPlayerName] = useState('');
-  function handlePlayerName(event) {
-    setSubmitted(false);
-    // Отслеживания и изменение строки имени пользователя.
-    setEnteredPlayerName(event.target.value);
-  }
-  // Хук отслеживания состояния нажатия кнопки Submitted(False).
-  const [submitted, setSubmitted] = useState(false);
-  function hadnleClickSubmitted() {
-    // Отслеживание и изменение состоянки кнопки Submitted(Set Name).
-    setSubmitted(true);
+  const [enteredPlayerName, setEnteredPlayerName] = useState(null);
+  // Функция Изменение состояния имени игрока(String).
+  function handleClickSubmitted() {
+    setEnteredPlayerName(playerName.current.value);
   }
   return (
     <section id='player'>
-      <h2>Welcome {submitted ? enteredPlayerName : 'unknown entity'}</h2>
+      <h2>Welcome {enteredPlayerName ?? 'unknown entity'}</h2>
       <p>
-        <input
-          type='text'
-          value={enteredPlayerName}
-          onChange={handlePlayerName}
-        />
-        <button onClick={hadnleClickSubmitted}>Set Name</button>
+        <input ref={playerName} type='text' />
+        <button onClick={handleClickSubmitted}>Set Name</button>
       </p>
     </section>
   );
