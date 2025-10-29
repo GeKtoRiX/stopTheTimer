@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 
 export default function Player() {
-  // Ссылка useRef на <input/> имени игрока.
+  // Хук связывания элемента <inpuе/>
   const playerName = useRef();
   // Хук отслеживания состояния имени игрока(null).
   const [enteredPlayerName, setEnteredPlayerName] = useState('');
