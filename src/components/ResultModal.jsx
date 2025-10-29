@@ -14,6 +14,7 @@ const ResultModal = forwardRef(function ResultModal(
 
   // Хук получения локального доступа к <dialog>
   const dialog = useRef();
+
   // Хук получения доступа к дочернему элементу родителем.
   useImperativeHandle(ref, () => {
     return {
@@ -23,6 +24,7 @@ const ResultModal = forwardRef(function ResultModal(
       },
     };
   });
+
   // Телепортирование элемента в div('modal')
   return createPortal(
     <dialog ref={dialog} className='result-modal'>

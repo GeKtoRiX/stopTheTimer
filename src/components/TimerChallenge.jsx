@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import ResultModal from './ResultModal.jsx';
+import ResultModal from '@/components/ResultModal.jsx';
 
 export default function TimerChallenge({ title, targetTime }) {
   // Хук связывания с таймером(setInterval()).
@@ -28,8 +28,9 @@ export default function TimerChallenge({ title, targetTime }) {
   }
   // Функция окончания работы таймера.
   function handleStop() {
-    // Отключение таймера.
+    // Деактивация таймера.
     clearInterval(timer.current);
+    // Открытие диалогового окна.
     dialog.current.open();
   }
   // Функция сброса времени на задание.
